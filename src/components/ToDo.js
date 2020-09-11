@@ -30,7 +30,22 @@ function ToDo ()
     // Don't let the page reload for the submission! Let's prevent that default action.
     event.preventDefault();
 
-    // TODO: Add new task to list; output in render.
+    // We can use the spread operator to break up an array, so that...
+    // each item inside is treated as an argument (value separated by
+    // comma, if we were to write it manually.)
+    const newToDosList = [...toDos]; // Fresh array with the same values from our state.
+    // !!! REMEMBER, WE NEVER UPDATE THE STATE VARIABLE DIRECTLY.
+
+    // We can add our NEW task to the new array.
+    // *Make sure it matches our format! We're using an object here to match...
+    //  our previous "To-Do" items.
+    newToDosList.push( { task: newTask } ); // "newTask" is our input state value!
+
+    // Update the "toDos" state value.
+    setToDos( newToDosList ); // What we pass in will replace the old state value!
+
+    // Clear the new task field, now that our ToDo is added.
+    setNewTask( '' ); // Set it to blank after submission so the user doesn't have to erase!
   }
 
   // We use "return" for our render, in a component.
