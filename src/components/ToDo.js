@@ -25,12 +25,18 @@ function ToDo ()
     { task: "Find out what Redux is" }
   ] );
 
+  // Function we can use for our "onSubmit" form event.
+  const addNewTask = event => {
+    // Don't let the page reload for the submission! Let's prevent that default action.
+    event.preventDefault();
 
+    // TODO: Add new task to list; output in render.
+  }
 
   // We use "return" for our render, in a component.
   return (
     <>
-      <form>
+      <form onSubmit={addNewTask}>
         <label htmlFor="task">New Task:</label>
         <input
           type="text"
