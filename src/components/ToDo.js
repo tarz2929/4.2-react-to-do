@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 // Component function.
 function ToDo ()
@@ -20,9 +21,9 @@ function ToDo ()
 
   // Set up state for our to-do list items.
   const [toDos, setToDos] = useState( [ // Default list of to-dos.
-    { task: "Buy milk" },
-    { task: "Learn React" },
-    { task: "Find out what Redux is" }
+    { id: uuidv4(), task: "Buy milk" },
+    { id: uuidv4(), task: "Learn React" },
+    { id: uuidv4(), task: "Find out what Redux is" }
   ] );
 
   // Function we can use for our "onSubmit" form event.
@@ -39,7 +40,7 @@ function ToDo ()
     // We can add our NEW task to the new array.
     // *Make sure it matches our format! We're using an object here to match...
     //  our previous "To-Do" items.
-    newToDosList.push( { task: newTask } ); // "newTask" is our input state value!
+    newToDosList.push( { id: uuidv4(), task: newTask } ); // "newTask" is our input state value!
 
     // Update the "toDos" state value.
     setToDos( newToDosList ); // What we pass in will replace the old state value!
@@ -64,7 +65,7 @@ function ToDo ()
         </p>
         <input type="submit" value="Add To-Do" />
       </form>
-      <ul>{toDos.map( ( toDo, index ) => <li key={index}>{toDo.task}</li> )}</ul>
+      <ul>{toDos.map( toDo => <li key={toDo.id}>{toDo.task}</li> )}</ul>
     </>
   );
 }
