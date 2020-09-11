@@ -23,8 +23,9 @@ function ToDo ()
     { task: "Buy milk" },
     { task: "Learn React" },
     { task: "Find out what Redux is" }
-    // Turn the array into a map with key-value pairs, easy to output JSX this way.
-  ].map( ( toDo, index ) => <li key={index}>{toDo.task}</li> ) );
+  ] );
+
+
 
   // We use "return" for our render, in a component.
   return (
@@ -42,7 +43,7 @@ function ToDo ()
         </p>
         <input type="submit" value="Add To-Do" />
       </form>
-      <ul>{toDos}</ul>
+      <ul>{toDos.map( ( toDo, index ) => <li key={index}>{toDo.task}</li> )}</ul>
     </>
   );
 }
